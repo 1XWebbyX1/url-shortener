@@ -8,79 +8,92 @@ var hostnameRegex = /^([a-z0-9\-_]+\.)+[a-z0-9\-_]+/i;
 
 var extractHostname = function(url) {
     var hostname;
-    //find & remove protocol (http, ftp, etc.) and get hostname
-   if (url.indexOf("//") > -1) {
+    if (url.indexOf("//") > -1) {//find & remove protocol (http, ftp, etc.) and get hostname
         hostname = url.split('/')[2];
     }
     else {
         hostname = url.split('/')[0];
     }
-
-    //find & remove port number
+    //find & remove port and ? number
     hostname = hostname.split(':')[0];
-    //find & remove "?"
     hostname = hostname.split('?')[0];
    return hostname;
 }
 
 
 var extractRootDomain = function(url) {
+    console.log('Extracting root domain from url....');
     var domain = extractHostname(url),
         splitArr = domain.split('.'),
         arrLen = splitArr.length;
-
     //extracting the root domain here
-    //if there is a subdomain
-    if (arrLen > 2) {
+    if (arrLen > 2) {//if there is a subdomain
         domain = splitArr[arrLen - 2] + '.' + splitArr[arrLen - 1];
-        //check to see if it's using a Country Code Top Level Domain (ccTLD) (i.e. ".me.uk")
-        if (splitArr[arrLen - 2].length == 2 && splitArr[arrLen - 1].length == 2) {
-            //this is using a ccTLD
-            domain = splitArr[arrLen - 3] + '.' + domain;
-        }
-    }
+       if (splitArr[arrLen - 2].length == 2 && splitArr[arrLen - 1].length == 2) {  //check to see if it's using a Country Code Top Level Domain (ccTLD) (i.e. ".me.uk")
+          domain = splitArr[arrLen - 3] + '.' + domain;  //this is using a ccTLD
+       }
+   }
     return domain;
 }
 
 
-var validateUrl = function(str){
+
+var validUrl = function(str){
+  console.log('validating url protocol....')
   return (urlRegex.test(str)) ? true : false;
 }
 
 
 
 
+var createUrlInStore = function(req, res){
+       UrlStore.find({}) //to get current number of entries in database and evaluate index
+        .then((data) => {
+           var url = new UrlStore({url: req.body.url, index: data.length + 1}); //url constructor
+           return url;
+        })
+        .then(url => {
+           console.log('creating object \n' + url);
+           url.save() //push url to database
+           .then((urlObject) => {
+              console.log('Short Url created successfully :)');
+              res.json({original_url: urlObject.url, short_url: urlObject.index});
+           })
+       })
+}
+
+var findUrlInStore = function(req, res){
+     console.log('Yay! Host is valid. Checking url in database...');
+     UrlStore.findOne({url: req.body.url})
+       .then((data) => {
+         if(data){ //if success
+          console.log('Url found!!');
+          res.json({original_url: req.body.url, short_url: data.index});
+         }
+         else{ //not found
+          console.log('Url not found. Creating one in database...');
+          createUrlInStore(req, res);
+         }
+    })
+}
+
 exports.postHandler = function(req, res){
-  if(validateUrl(req.body.url)){
-    var hostname = extractRootDomain(req.body.url);
-      console.log(hostname);
-      if(hostname){
-         dns.lookup('' + hostname, function(err) {
-            if(err) {res.json({error: 'invalid hostname'});}
-            else{
-             UrlStore.findOne({url: req.body.url}, function(err, data){
-               if(err) return;
-               if(data){
-                 res.json({original_url: req.body.url, short_url: data.index});
-              }
-              else{
-                 UrlStore.find({}, function(err, data){
-                if(err) return;
-                var url = new UrlStore({url: req.body.url, index: data.length + 1});
-                url.save(function(err){
-                  if(err) return;
-                  res.json({original_url: req.body.url, short_url: data.length + 1});
-               });
-             });
-            }
+     if(!validUrl(req.body.url)){
+        console.log('invalid url');
+        res.json({error: 'invalid url'});
+    }else {
+        console.log('Yay! Url is valid.')
+        var hostname = extractRootDomain(req.body.url);
+        if(hostname){
+            dns.lookup('' + hostname, function(err) {
+                if(err) {
+                    console.log('Uh Oh! Invalid host');
+                    res.json({error: 'invalid hostname'});
+                }
+                else findUrlInStore(req, res);
           });
-        }
-      });
+       }
    }
-  }else {
-    console.log('invalid url');
-    res.json({error: 'invalid url'});
-  }
 }
 
 
