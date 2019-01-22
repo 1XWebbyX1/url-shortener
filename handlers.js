@@ -44,8 +44,6 @@ var validUrl = function(str){
 }
 
 
-
-
 var createUrlInStore = function(req, res){
        UrlStore.find({}) //to get current number of entries in database and evaluate index
         .then((data) => {
@@ -59,6 +57,10 @@ var createUrlInStore = function(req, res){
               console.log('Short Url created successfully :)');
               res.json({original_url: urlObject.url, short_url: urlObject.index});
            })
+       })
+       .catch((e) => {
+         console.log('Operation failed! \n' + e.stack);
+         res.status(400).send({'error': 'OPERATION FAILED'});
        })
 }
 
@@ -74,6 +76,10 @@ var findUrlInStore = function(req, res){
           console.log('Url not found. Creating one in database...');
           createUrlInStore(req, res);
          }
+    })
+    .catch((e) => {
+      console.log('Operation failed! \n' + e.stack);
+      res.status(400).send({'error': 'OPERATION FAILED'});
     })
 }
 
@@ -99,8 +105,14 @@ exports.postHandler = function(req, res){
 
 
 exports.getHandler = function (req, res) {
-   UrlStore.findOne({index: req.params.short_url}, (err, data) => {
-      if(err) return;
-      res.redirect(data.url);
-    })
+   UrlStore.findOne({index: req.params.short_url})
+   .then((data) => {
+     console.log('retreiving url from database...');
+     if(!data) return res.status(404).send('Oops. No URL found here.');
+     res.redirect(data.url);
+   })
+   .catch((e) => {
+     console.log('Operation failed! \n' + e.stack);
+     res.status(400).send({'error': 'OPERATION FAILED'});
+   })
 }
