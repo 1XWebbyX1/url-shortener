@@ -11,7 +11,7 @@
 		"node": "11.5.0"
 	},
   "keywords": [],
-  "author": "",
+  "author": "Khayati Asrani",
   "license": "MIT",
   "dependencies": {
     "body-parser": "^1.18.3",

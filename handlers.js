@@ -6,37 +6,6 @@ var dns = require('dns');
 var urlRegex = /^https?:\/\/[\w.\-_]+[\/.]*/i;
 var hostnameRegex = /^([a-z0-9\-_]+\.)+[a-z0-9\-_]+/i;
 
-var extractHostname = function(url) {
-    var hostname;
-    if (url.indexOf("//") > -1) {//find & remove protocol (http, ftp, etc.) and get hostname
-        hostname = url.split('/')[2];
-    }
-    else {
-        hostname = url.split('/')[0];
-    }
-    //find & remove port and ? number
-    hostname = hostname.split(':')[0];
-    hostname = hostname.split('?')[0];
-   return hostname;
-}
-
-
-var extractRootDomain = function(url) {
-    console.log('Extracting root domain from url....');
-    var domain = extractHostname(url),
-        splitArr = domain.split('.'),
-        arrLen = splitArr.length;
-    //extracting the root domain here
-    if (arrLen > 2) {//if there is a subdomain
-        domain = splitArr[arrLen - 2] + '.' + splitArr[arrLen - 1];
-       if (splitArr[arrLen - 2].length == 2 && splitArr[arrLen - 1].length == 2) {  //check to see if it's using a Country Code Top Level Domain (ccTLD) (i.e. ".me.uk")
-          domain = splitArr[arrLen - 3] + '.' + domain;  //this is using a ccTLD
-       }
-   }
-    return domain;
-}
-
-
 
 var validUrl = function(str){
   console.log('validating url protocol....')
