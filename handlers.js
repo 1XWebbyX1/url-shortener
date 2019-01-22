@@ -89,7 +89,7 @@ exports.postHandler = function(req, res){
         res.json({error: 'invalid url'});
     }else {
         console.log('Yay! Url is valid.')
-        var hostname = extractRootDomain(req.body.url);
+        var hostname = req.get('host');
         if(hostname){
             dns.lookup('' + hostname, function(err) {
                 if(err) {
