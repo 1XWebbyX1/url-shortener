@@ -8,8 +8,7 @@ var hostnameRegex = /^([a-z0-9\-_]+\.)+[a-z0-9\-_]+/i;
 
 
 var validUrl = function(str){
-  console.log(str);
-  console.log('validating url protocol....');
+  console.log('validating url protocol....')
   return (urlRegex.test(str)) ? true : false;
 }
 

@@ -20,7 +20,6 @@ process.env.MONGOLAB_URI = 'mongodb://user:password11@ds161764.mlab.com:61764/ur
 /** this project needs to parse POST bodies **/
 var bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({extended: false}));
-
 //compile sass
 var srcPath = __dirname + '/src';
 var destPath = __dirname + '/public';
@@ -31,6 +30,7 @@ app.use('/public', sassMiddleware({
   debug: true,
   outputStyle: 'expanded'
 }));
+
 
 //mount static assests
 app.use('/public', express.static(process.cwd() + '/src'));

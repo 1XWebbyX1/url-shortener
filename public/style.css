@@ -34,7 +34,7 @@ body form {
   padding: 10px;
 }
 
-body form input {
+body form input[type=text] {
   width: 50%;
   height: auto;
   padding: 17px 10px;
@@ -44,7 +44,7 @@ body form input {
   border-radius: 5px 0 0 5px;
 }
 
-body form button {
+body form input[type=submit] {
   text-transform: uppercase;
   font-family: inherit;
   font-size: calc(0.3em + 0.8vw);

@@ -31,7 +31,7 @@ body {
 		padding: 10px;
 
 
-		input{
+		input[type=text]{
 			width: 50%;
 			height: auto;
 			padding: 17px 10px;
@@ -41,7 +41,7 @@ body {
 			border-radius: 5px 0 0 5px;
 		}
 
-		button{
+		input[type=submit]{
 			text-transform: uppercase;
 			font-family: inherit;
 			font-size: calc(0.3em + 0.8vw);
@@ -52,6 +52,7 @@ body {
 			padding: 20px 10px;
 			background: #ff9933;
 			border: none;
+			outline: none;
 			cursor: pointer;
 		}
   }

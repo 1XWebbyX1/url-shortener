@@ -11,10 +11,10 @@
      <h1> SHORTEN URL </h1>
      <p>Post the link in the form below. The server will respond with a JSON object. Copy the short URL from the object. Next, replace the string 'new' in the URL address of the page with the short URL string you copied. Voilà! you will be redirected to the posted site.</p>
      <h3>EXAMPLE</h3>
-     <p>Post https://www.freecodecamp.com in the form<br />Go to [this_project_url]/api/shorturl/1<br />You will reach https://www.freecodecamp.com.</p> 
+     <p>Post https://www.freecodecamp.com in the form<br />Go to [this_project_url]/api/shorturl/1<br />You will reach https://www.freecodecamp.com.</p>
      <form action="api/shorturl/new" method="POST">
-       <input type="text" placeholder="ENTER URL" />
-       <button class='button' type="submit">Shorten</button>
+       <input id="url_input" type="text" name="url" placeholder="ENTER URL">
+       <input type="submit" value="SHORTEN">
      </form>
    </body>
 
