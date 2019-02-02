@@ -1,0 +1,72 @@
+@import url('https://fonts.googleapis.com/css?family=Ubuntu');
+
+body {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+	overflow: hidden;
+	text-align: center;
+	line-height: 1.4;
+	color: white;
+	font-family: Ubuntu;
+	background-image: linear-gradient(to right top, #222023, #3d2c44, #5a3867 30%, #3d2c44, #222023);
+
+  h1{
+		color: #ff9933;
+		font-weight: 600;
+		font-size: calc(1.4em + 2vw);
+	}
+	h3{
+		font-size: calc(0.4em + 1.2vw);
+	}
+	p{
+		margin-top: 0;
+		width: 55%;
+		font-size: calc(0.6em + 0.7vw);
+	}
+	form{
+    width: 100%;
+		padding: 10px;
+
+
+		input{
+			width: 50%;
+			height: auto;
+			padding: 17px 10px;
+			font-size: calc(0.4em + 1vw);
+			outline: none;
+			border: none;
+			border-radius: 5px 0 0 5px;
+		}
+
+		button{
+			text-transform: uppercase;
+			font-family: inherit;
+			font-size: calc(0.3em + 0.8vw);
+			font-weight: 800;
+			border-radius: 0 25px 25px 0;
+			width: 10%;
+			height: auto;
+			padding: 20px 10px;
+			background: #ff9933;
+			border: none;
+			cursor: pointer;
+		}
+  }
+}
+
+@media only screen and (max-width: 580px) {
+	body {
+   p{width: 80%;}
+	 form {
+	 	input{
+	 		width: 70%;
+	 	}
+	 	button{
+	 		width: 20%;
+	 	}
+	 }
+	}
+}

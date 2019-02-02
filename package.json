@@ -5,18 +5,20 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start": "node server.js & browser-sync start --proxy localhost:3001 --files 'src'"
   },
   "engines": {
-		"node": "11.5.0"
-	},
+    "node": "11.5.0"
+  },
   "keywords": [],
   "author": "Khayati Asrani",
   "license": "MIT",
   "dependencies": {
     "body-parser": "^1.18.3",
+    "browser-sync": "^2.26.3",
     "express": "^4.16.4",
     "mongodb": "^3.1.12",
-    "mongoose": "^5.4.5"
+    "mongoose": "^5.4.5",
+    "node-sass-middleware": "^0.11.0"
   }
 }
