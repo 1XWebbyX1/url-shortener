@@ -8,7 +8,7 @@ var sassMiddleware = require('node-sass-middleware');
 var app = express();
 
 // Basic Configuration
-var port = process.env.PORT || 3000;
+var port = process.env.PORT || 8081;
 process.env.MONGOLAB_URI = 'mongodb://user:password11@ds161764.mlab.com:61764/url_shortner_database';
 /** this project needs a db !! **/
  mongoose.connect(process.env.MONGOLAB_URI, {useNewUrlParser: true})
