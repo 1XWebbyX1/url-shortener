@@ -28,6 +28,7 @@ app.use('/public', sassMiddleware({
   src: srcPath,
   dest: destPath,
   debug: true,
+  force: true,
   outputStyle: 'expanded'
 }));
 
