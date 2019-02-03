@@ -19,8 +19,8 @@ body {
 		font-size: calc(1.4em + 2vw);
 	}
 	img{
-		width: 150px;
-		height: 150px;
+		width: calc(3em + 7vw);
+		height: calc(3em + 7vw);
 		position: absolute;
 	}
 	#left-img{
@@ -78,7 +78,7 @@ body {
 
 @media only screen and (max-width: 580px) {
 	body {
-   p{width: 80%;}
+   p{width: 90%;}
 	 form {
 	 	input[type=text]{
 	 		width: 70%;
