@@ -84,6 +84,9 @@ body form input[type=submit] {
   body p {
     width: 90%;
   }
+  body #left-img {
+    bottom: 1%;
+  }
   body form input[type=text] {
     width: 70%;
   }
