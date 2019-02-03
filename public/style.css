@@ -22,6 +22,7 @@ body h1 {
 body img {
   width: calc(3em + 7vw);
   height: calc(3em + 7vw);
+  z-index: -1;
   position: absolute;
 }
 
@@ -85,7 +86,7 @@ body form input[type=submit] {
     width: 90%;
   }
   body #left-img {
-    bottom: 1%;
+    bottom: 0%;
   }
   body form input[type=text] {
     width: 70%;
