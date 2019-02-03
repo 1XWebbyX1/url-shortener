@@ -53,12 +53,14 @@ var findUrlInStore = function(req, res){
 }
 
 exports.postHandler = function(req, res){
+  console.log(req.body.url);
      if(!validUrl(req.body.url)){
         console.log('invalid url');
         res.json({error: 'invalid url'});
     }else {
-        console.log('Yay! Url is valid.')
-        var hostname = req.get('host');
+        console.log('Yay! Url is valid.');
+        findUrlInStore(req, res);
+      /*  var hostname = req.get('host');
         if(hostname){
             dns.lookup('' + hostname, function(err) {
                 if(err) {
@@ -67,7 +69,7 @@ exports.postHandler = function(req, res){
                 }
                 else findUrlInStore(req, res);
           });
-       }
+       }*/
    }
 }
 
@@ -78,6 +80,7 @@ exports.getHandler = function (req, res) {
    .then((data) => {
      console.log('retreiving url from database...');
      if(!data) return res.status(404).send('Oops. No URL found here.');
+     res.status(200);
      res.redirect(data.url);
    })
    .catch((e) => {

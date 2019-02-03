@@ -51,6 +51,8 @@ app.post("/api/shorturl/new", handlers.postHandler);
 app.get("/api/shorturl/:short_url", handlers.getHandler);
 
 
-app.listen(port, function () {
+var server = app.listen(port, function () {
   console.log('Node.js listening ...');
 });
+
+module.exports = server

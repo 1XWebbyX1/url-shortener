@@ -4,7 +4,7 @@
   "description": "URL Shortener Microservice",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "mocha --timeout 60000",
     "start": "node server.js & browser-sync start --proxy localhost:8081 --files 'src'"
   },
   "engines": {
@@ -20,5 +20,10 @@
     "mongodb": "^3.1.12",
     "mongoose": "^5.4.5",
     "node-sass-middleware": "^0.11.0"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "chai-http": "^4.2.1",
+    "mocha": "^5.2.0"
   }
 }
