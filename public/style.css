@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css?family=Ubuntu");
+@import url("https://fonts.googleapis.com/css?family=Ubuntu|Nunito|Oxygen|Raleway");
 body {
   display: flex;
   flex-direction: column;
@@ -9,8 +9,8 @@ body {
   text-align: center;
   line-height: 1.4;
   color: white;
-  font-family: Ubuntu;
-  background-image: linear-gradient(to right top, #222023, #3d2c44, #5a3867 30%, #3d2c44, #222023);
+  font-family: Raleway;
+  background-image: linear-gradient(to right top, #1a181b, #222023, #3d2c44, #5a3867, #3d2c44, #222023, #1a181b);
 }
 
 body h1 {
@@ -19,25 +19,46 @@ body h1 {
   font-size: calc(1.4em + 2vw);
 }
 
+body img {
+  width: 150px;
+  height: 150px;
+  position: absolute;
+}
+
+body #left-img {
+  transform: rotate(-35deg);
+  top: 76%;
+  left: 8%;
+}
+
+body #right-img {
+  transform: rotate(135deg);
+  top: 7%;
+  right: 10%;
+}
+
 body h3 {
   font-size: calc(0.4em + 1.2vw);
 }
 
 body p {
   margin-top: 0;
-  width: 55%;
+  width: 60%;
   font-size: calc(0.6em + 0.7vw);
 }
 
 body form {
   width: 100%;
   padding: 10px;
+  display: inline-flex;
+  justify-content: center;
 }
 
 body form input[type=text] {
   width: 50%;
   height: auto;
   padding: 17px 10px;
+  margin: 0 2px;
   font-size: calc(0.4em + 1vw);
   outline: none;
   border: none;
@@ -55,6 +76,7 @@ body form input[type=submit] {
   padding: 20px 10px;
   background: #ff9933;
   border: none;
+  outline: none;
   cursor: pointer;
 }
 
@@ -62,10 +84,10 @@ body form input[type=submit] {
   body p {
     width: 80%;
   }
-  body form input {
+  body form input[type=text] {
     width: 70%;
   }
-  body form button {
+  body form input[type=submit] {
     width: 20%;
   }
 }
