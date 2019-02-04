@@ -19,17 +19,17 @@ Project is created with :
 
 # How to Use
 
-Post a valid URL in the form
-You will be taken to the route [project url]/api/shorturl/new
-Copy the short_url value from the response object.(It will be the index of the entry in the database).
-Go to [project url]/api/shorturl/[copied short_url]
-You will be redirected to the posted URL.
+Post a valid URL in the form\
+You will be taken to the route [project url]/api/shorturl/new\
+Copy the short_url value from the response object.(It will be the index of the entry in the database)\.
+Go to [project url]/api/shorturl/[copied short_url]\
+You will be redirected to the posted URL.\
 
-Example:
-Post https://www.freecodecamp.com.
-Copy the short_url(in this case it will be 1)
-Go to https://url-shortener-project11.herokuapp.com/api/shorturl/1
-You will react https://www.freecodecamp.com.
+Example:\
+Post https://www.freecodecamp.com.\
+Copy the short_url(in this case it will be 1)\
+Go to https://url-shortener-project11.herokuapp.com/api/shorturl/1\
+You will react https://www.freecodecamp.com.\
 
 # You may also like
 - [Timestamp Microservice](https://github.com/1XWebbyX1/timestamp-microservice)
