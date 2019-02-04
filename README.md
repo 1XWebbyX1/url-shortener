@@ -5,7 +5,7 @@ A full stack URL Shortener Microservice api project using RESTful API.
 ![screenshot](https://i.ibb.co/HzhhPDZ/Screen-Shot-2019-02-04-at-18-06-11.png)
 
 # Visit
-Visit at [heroku](https://url-shortener-project11.herokuapp.com/).
+Visit at [heroku](https://my-miniurl.herokuapp.com).
 
 # Technologies
 Project is created with :
