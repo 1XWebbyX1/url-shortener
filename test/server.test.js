@@ -4,47 +4,43 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const chaiHttp = require('chai-http');
 const server = require('../server');
+const UrlStore = require('../model');
 const chai = require('chai');
 const should = chai.should();
 // Create a new schema that accepts a 'name' object.
 // 'name' is a required field
 chai.use(chaiHttp);
 
-const testSchema = new Schema({
-  url: { type: String, required: true },
-  index: {type: Number, required: true}
-});
-//Create a new collection called 'Name'
-const UrlStore = mongoose.model('UrlStore', testSchema);
+
 describe('Database Tests', function() {
   //Before starting the test, create a sandboxed database connection
   //Once a connection is established invoke done()
   before(function (done) {
-    mongoose.connect('mongodb://user:password11@ds221155.mlab.com:21155/test_database',  {useNewUrlParser: true});
+    /*mongoose.connect('mongodb://user:password11@ds221155.mlab.com:21155/test_database',  {useNewUrlParser: true});
     const db = mongoose.connection;
     db.on('error', console.error.bind(console, 'connection error'));
     db.once('open', function() {
       console.log('We are connected to test database!');
       done();
-    });
+    });*/done();
   });
-
-
-  beforeEach((done) => {
-    UrlStore.deleteOne({}, (err) => {
-      done();
-    });
- });
 
  /*
    * Test the /GET/:id route
    */
    describe('/GET/api/shorturl/:short_url site', () => {
+
+       afterEach((done) => {
+         UrlStore.deleteOne({}, (err) => {
+           done();
+         });
+      });
+
        it('it should GET a Url by the given short_url as index', (done) => {
            let url = new UrlStore({ url : 'https://www.freecodecamp.com', index: 1 });
            url.save((err, url) => {
               chai.request(server)
-             .get('/api/shorturl/' + url.index)
+             .get('/api/shorturl/1')
              .end((err, res) => {
                    res.should.have.status(200);
                done();

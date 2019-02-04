@@ -3,6 +3,7 @@
 var express = require('express');
 var mongo = require('mongodb');
 var path = require('path');
+var config = require('./config/config.js');
 var mongoose = require('mongoose');
 var sassMiddleware = require('node-sass-middleware');
 
@@ -10,13 +11,12 @@ var app = express();
 
 // Basic Configuration
 var port = process.env.PORT || 8081;
-process.env.MONGOLAB_URI = 'mongodb://user:password11@ds161764.mlab.com:61764/url_shortner_database';
+;
 /** this project needs a db !! **/
- mongoose.connect(process.env.MONGOLAB_URI, {useNewUrlParser: true})
+ mongoose.connect(config.DBHost, {useNewUrlParser: true})
         .catch((e) => {
           console.log('Failure to connect to database.');
-        })
-
+        });
 
 /** this project needs to parse POST bodies **/
 var bodyParser = require('body-parser');

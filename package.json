@@ -4,11 +4,8 @@
   "description": "URL Shortener Microservice",
   "main": "server.js",
   "scripts": {
-    "test": "mocha --timeout 60000",
-    "start": "node server.js & browser-sync start --proxy localhost:8081 --files 'src'"
-  },
-  "engines": {
-    "node": "11.5.0"
+    "test": "NODE_ENV=test mocha --timeout 60000",
+    "start": "NODE_ENV=dev node server.js & browser-sync start --proxy localhost:8081 --files 'src'"
   },
   "keywords": [],
   "author": "Khayati Asrani",
