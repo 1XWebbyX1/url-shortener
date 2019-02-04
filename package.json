@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "test": "NODE_ENV=test mocha --timeout 60000",
-    "start": "NODE_ENV=dev node server.js & browser-sync start --proxy localhost:8081 --files 'src'"
+    "start": "NODE_ENV=dev node server.js"
   },
   "keywords": [],
   "author": "Khayati Asrani",
