@@ -28,7 +28,7 @@ You will be redirected to the posted URL.
 Example:\
 Post https://www.freecodecamp.com \
 Copy the short_url(in this case it will be 1)\
-Go to https://url-shortener-project11.herokuapp.com/api/shorturl/1 \
+Go to https://my-miniurl.herokuapp.com/api/shorturl/1 \
 You will reach https://www.freecodecamp.com.
 
 # You may also like
