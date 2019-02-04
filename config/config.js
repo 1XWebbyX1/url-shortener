@@ -1,12 +1,13 @@
-
+const dotenv = require('dotenv');
+dotenv.config();
 const env = process.env.NODE_ENV; // 'dev' or 'test'
 console.log(env);
 const dev = {
- DBHost: 'mongodb://user:password11@ds161764.mlab.com:61764/url_shortner_database'
+ DBHost: process.env.DEV_DB_URI
 };
 
 const test = {
- DBHost: 'mongodb://user:password11@ds221155.mlab.com:21155/test_database'
+ DBHost: process.env.TEST_DB_URI
 };
 
 const config = {
