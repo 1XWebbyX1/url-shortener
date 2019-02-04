@@ -21,12 +21,12 @@ Project is created with :
 
 Post a valid URL in the form\
 You will be taken to the route [project url]/api/shorturl/new\
-Copy the short_url value from the response object.(It will be the index of the entry in the database)\.
+Copy the short_url value from the response object.(It will be the index of the entry in the database)\
 Go to [project url]/api/shorturl/[copied short_url]\
 You will be redirected to the posted URL.
 
 Example:\
-Post https://www.freecodecamp.com.\
+Post https://www.freecodecamp.com\
 Copy the short_url(in this case it will be 1)\
 Go to https://url-shortener-project11.herokuapp.com/api/shorturl/1\
 You will react https://www.freecodecamp.com.
