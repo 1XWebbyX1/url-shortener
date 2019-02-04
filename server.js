@@ -2,6 +2,7 @@
 
 var express = require('express');
 var mongo = require('mongodb');
+var path = require('path');
 var mongoose = require('mongoose');
 var sassMiddleware = require('node-sass-middleware');
 
@@ -21,34 +22,32 @@ process.env.MONGOLAB_URI = 'mongodb://user:password11@ds161764.mlab.com:61764/ur
 var bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({extended: false}));
 //compile sass
-var srcPath = __dirname + '/src';
-var destPath = __dirname + '/public';
+var srcPath = __dirname + '/sass';
 
-app.use('/public', sassMiddleware({
+app.use(sassMiddleware({
   src: srcPath,
-  dest: destPath,
+  dest: path.join(__dirname, 'public'),
   debug: true,
-  force: true,
   outputStyle: 'expanded'
 }));
 
 
 //mount static assests
-app.use('/public', express.static(process.cwd() + '/src'));
+app.use(express.static(process.cwd() + '/public'));
 
 //basic-route
 app.get('/', function(req, res){
-  res.sendFile(process.cwd() + '/public/index.html');
+  res.sendFile(process.cwd() + '/views/index.html');
 });
 
 
 
-var handlers = require('./handlers.js');
+var routes = require('./routes.js');
 
 //api routes
-app.post("/api/shorturl/new", handlers.postHandler);
+app.post("/api/shorturl/new", routes.postHandler);
 
-app.get("/api/shorturl/:short_url", handlers.getHandler);
+app.get("/api/shorturl/:short_url", routes.getHandler);
 
 
 var server = app.listen(port, function () {
