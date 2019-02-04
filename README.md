@@ -26,10 +26,10 @@ Go to [project url]/api/shorturl/[copied short_url]\
 You will be redirected to the posted URL.
 
 Example:\
-Post https://www.freecodecamp.com\
+Post https://www.freecodecamp.com \
 Copy the short_url(in this case it will be 1)\
-Go to https://url-shortener-project11.herokuapp.com/api/shorturl/1\
-You will react https://www.freecodecamp.com.
+Go to https://url-shortener-project11.herokuapp.com/api/shorturl/1 \
+You will reach https://www.freecodecamp.com.
 
 # You may also like
 - [Timestamp Microservice](https://github.com/1XWebbyX1/timestamp-microservice)
