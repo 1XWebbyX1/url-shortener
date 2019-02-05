@@ -1,6 +1,6 @@
 'use strict';
 
-var UrlStore = require('./model.js');
+var UrlStore = require('../model/model.js');
 var dns = require('dns');
 
 var urlRegex = /^https?:\/\/[\w.\-_]+[\/.]*/i;

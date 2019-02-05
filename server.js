@@ -42,12 +42,12 @@ app.get('/', function(req, res){
 
 
 
-var routes = require('./routes.js');
+var controller = require('./controllers/urlController.js');
 
 //api routes
-app.post("/api/shorturl/new", routes.postHandler);
+app.post("/api/shorturl/new", controller.postHandler);
 
-app.get("/api/shorturl/:short_url", routes.getHandler);
+app.get("/api/shorturl/:short_url", controller.getHandler);
 
 
 var server = app.listen(port, function () {

@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const chaiHttp = require('chai-http');
 const server = require('../server');
-const UrlStore = require('../model');
+const UrlStore = require('../model/model');
 const chai = require('chai');
 const should = chai.should();
 
@@ -12,9 +12,8 @@ chai.use(chaiHttp);
 
 
 describe('Database Tests', function() {
-  //Before starting the test, create a sandboxed database connection
  /*
-   * Test the /GET/:short_url route
+    Test the /GET/:short_url route
    */
    describe('/GET/api/shorturl/:short_url', () => {
 
